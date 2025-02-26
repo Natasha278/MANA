@@ -1,0 +1,197 @@
+/* NEW THINGS: */
+//style={{ backgroundColor: "#f7f7f7" }} (by chatGPT)
+//leading-x (by Tailwind)
+//w-5/12 (by Tailwind)
+//w-{lo que quiera} (marquitos)
+//high, width image (by HTML)
+//import React from "react";
+//import { Rate } from "antd";
+//<Rate disabled defaultValue={4} /> (by Ant Design)
+//tracking-normal (by Tailwind)
+// list-disc (by Tailwind)
+
+---------- GENERAL ----------
+VARIABLE -> Variable to replace
+
+
+---------- HTML ----------
+2 Types:
+  <TAG_NAME> CHILDREN </TAG_NAME>
+  <TAG_NAME/>
+
+Tags:
+  <div></div> -> Container
+  <span></span> -> Text
+  <button></button> -> Button
+  <img/> -> Image
+
+Attributes:
+  <div ATTRIBUTE_NAME=ATTRIBUTE_VALUE></div>
+  <div className="CLASS"></div>
+  <div id="ID"></div>
+  <img src="IMAGE_PATH"></div>
+  <input placeholder="TEXT" />
+  <input type="TYPE" />
+  <label htmlFor="ID"></label>
+
+Tailwind CSS:
+  <div className="CLASS_1 CLASS_2"></div>
+
+  Tailwind CSS classes:
+    bg-COLOR-INTENSITY -> Background color
+    text-COLOR-INTENSITY -> Text color
+
+    flex -> Makes the container flexible and places children in a row
+      justify-center -> Horizontally align children to center
+      item-center -> Vertically align children to center
+      flex-col -> Places children in a column
+      gap-SPACE -> Adds a gap between its children
+
+    h-HEIGHT
+    w-WIDTH
+
+    p-PADDING -> Padding
+    m-MARGIN -> Margin
+
+    border-THICKNESS -> Border around the element
+    border-COLOR-INTENSITY -> Color of the border
+
+    rounded-MEASURE -> How rounded is the element
+    shadow-MEASURE -> Shadow
+
+    text-MEASURE -> Size of the text
+    font-WEIGHT -> How bold is the font
+
+    fixed -> Fixed position in the page
+    absolute -> Position relative to the nearest parent with a position set
+    relative -> Position relative the position where the element would be placed
+
+    left-NUMBER -> Where the left of the container is placed
+    right-NUMBER -> Where the right of the container is placed
+    top-NUMBER -> Where the top of the container is placed
+    bottom-NUMBER -> Where the bottom of the container is placed
+
+    translate-x-NUMBER -> Translate the element in the x axis
+    translate-y-NUMBER -> Translate the element in the x axis
+
+    z-NUMBER -> Z position in the page
+  
+    STATE:CLASS
+      dark -> Applies when the theme is set to dark
+      hover -> Applies when the element is hovered
+      active -> Applies when the element is active
+      focus -> Applies when the element is focused
+
+    transition -> Transition when entering or leaving a state
+    duration-NUMBER -> The duration of the transition
+    
+
+  Tailwind CSS units:
+    NUMBER/NUMBER -> A fraction of its parent size
+    full -> 100% of its parent size
+    screen -> Size of the screen
+
+JavaScript
+  function NAME(ARG1, ARG2) {FUNCTION}
+
+Next.js
+  <Image />
+  <Link></Link>
+
+
+Ctrl + Shift + I  ->  Ctrl + Shift + P  ->  Show Rendering  ->  prefers-color-scheme
+
+onClick={FUNCTION}
+const [value, setValue] = useState(initialValue)
+
+value -> Read the value
+setValue -> Change the value
+
+setValue(VALUE) -> When new VALUE doesn't depend on old value
+setValue(FUNCTION(value) {}) -> When new VALUE depends on old value
+setValue((value) => newValue)
+
+https://learnxinyminutes.com/docs/javascript/ 
+- Popup: Function called with setTimeout(func , num000)
+- access value of a key in object: this.key
+- Change object with a function: adding or accessing values of it. const ... = func() {
+  return something happens to this.key }
+
+obj.func = func() //now ... : func() is in obj. 
+- Do something with this.key: call, apply, bind
+- create new object by: 
+const constructor0 = {func(this... = ....);}; 
+new constructor0(); // {.. : ....}
+- make a prototype of an obj without changing it at all:
+const prototype = {
+  key1: value1
+  func1: func() = {something happens to this.key_of_other_object}
+}
+obj.__proto__ = prototype // now prototype is part of obj and u can access their keys by using obj.prototype_key and obj has no even change
+- access keys of obj with prototype and keys of prototype: (for in obj)
+- access keys of original obj: for in obj{ if (obj.hasOwnProperty)}
+- change value ob obj: obj.key = new value
+
+
+https://learnxinyminutes.com/docs/typescript/
+- Math.sqrt(), Math.pow()
+- functions and constants can also have types
+- static?: constants, variables that are "sticked" static .. to an obj. You cannot create another object obj1 and call it with it. obj1...
+- implement?: implement the values of an interface in a data type. 
+- extend: inherit or extends the behavior of another one --> useful for parent id in answer
+- readonly: read 
+- for..in statement: iterates over keys returns values
+
+https://learnxinyminutes.com/docs/sql/
+CREATE, DROP, SELECT (* or Name) FROM (database), 
+LIMIT, WHERE Name LIKE ...
+ORDER BY title DESC
+IN, NO IN, BETWEEN
+MIN(), MAX(), COUNT(*), SUM(), AVG()
+HAVING
+order syntax: 
+SELECT _ FROM _ JOIN _ ON _ WHERE _ GROUP BY _ HAVING _ ORDER BY _ UNION
+
+(pgTable) https://orm.drizzle.team/docs/sql-schema-declaration
+https://orm.drizzle.team/docs/column-types/pg
+schema.ts
+export const name = pgTable('Table_name', {
+  column1: serial, text, varchar..
+  ...:
+})
+
+https://orm.drizzle.team/docs/select
+https://orm.drizzle.team/docs/insert
+https://orm.drizzle.team/docs/update
+https://orm.drizzle.team/docs/delete
+
+npm run db:generate
+npm run db:migrate
+
+Documentation:
+  https://nextjs.org/docs/app/api-reference/functions/cookies: 
+  - cookies.has("session")
+  https://www.npmjs.com/package/jsonwebtoken: Is ours token symmetric - synchronous?
+  Useful:
+  - complete: return an object with the decoded { payload, header, signature } instead of only the usual content of the payload.
+  - expiresIn vs maxAge?
+  - TokenExpiredError
+  - JsonWebTokenError
+  https://www.npmjs.com/package/bcrypt
+  - is hash encrypting?
+  - hash password: bcrypt.hash(myPlaintextPassword, saltRounds)
+  check a password: bcrypt.compare(myPlaintextPassword)
+  We are not using synchronous so I don't need to pay attention to sync ways to hash or compare. 
+
+https://nextjs.org/docs/app/building-your-application/routing/middleware
+- Ensure user identity and check session cookies before granting access to specific pages or API routes, Redirect users at the server level based on certain conditions. 
+- define which paths Middleware will run on: 
+export const config = {
+  matcher: '/about/:path*' or ['/about/:path*', '/dashboard/:path*'],
+}
+
+
+GET: Get information from the server
+POST: Post information to the server
+PATCH: Update information from the server
+DELETE: Delete information from the server

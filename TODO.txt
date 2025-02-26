@@ -1,0 +1,254 @@
+Replace img with Image                                  --> DONE
+Redesign to fit in max-w-7xl - Don't use static height  --> DONE
+Create 3 more pages like Pricing                        --> faq, pricing, sing in + 3: Company (about us, mission, vision, values, News, ), Products (physic calendar, extension of software), Contact us            --> DONE
+Use links
+1. Put pages in the head of page
+Dark mode                                               --> DONE
+
+---------------------------------------------------------------------
+
+Move every section in landing page to its own component
+  Do the same with the rest of pages (Landing Page, Company, faq, contact-us)                    --> DONE                                      
+
+Finish Button component          --> DONE
+Add a new property to button - color --> DONE
+Replace all buttons with custom Button  --> DONE
+
+Create new reusable components
+- Alert Dialog (You don't need to click the button for it to appear, it's just there) (https://ui.shadcn.com/docs/components/alert-dialog)       --> DONE
+- Avatar (https://ui.shadcn.com/docs/components/avatar)           --> DONE
+- Badge (https://ui.shadcn.com/docs/components/badge)             --> DONE
+- Input (https://ui.shadcn.com/docs/components/input)             --> DONE
+- Label (https://ui.shadcn.com/docs/components/label)             --> DONE
+- Progress (https://ui.shadcn.com/docs/components/progress)       --> DONE
+- Table (https://ui.shadcn.com/docs/components/table)             --> DONE
+  data: {invoice: string; status: string; method: string; amount: number}[]
+
+Create a new component for each navigation item <NavItem text="Company" href="/company" />                                                       --> DONE
+
+
+
+change all w and h by p: tengo solo:                --> DONE
+- al inicio de la página: h-screen w-screen     
+- altura de hr (0.5) o 1
+- tamaño del div de un texto de landing page
+
+create remaining pages      
+fix table component 
+
+
+
+
+
+
+
+
+Understand the Todo app
+Understand useState and rerenders
+Understand useEffect and use cases
+Understand Array.map() and Array.filter()
+Understand spread operator
+
+
+
+Blog
+Inputs
+  Title
+  Text
+  Tags
+    Create tags
+    The app starts with no tags. The user creates tags and then has the ability to select them
+  IsRead
+  Add
+  
+Pages
+  Something like this but the pages should be the size of the screen https://ui.shadcn.com/docs/components/carousel
+  First page is to add new blog posts
+  Next pages are the blogs that aren't read
+  The user should have the ability to navigate through the unread blog posts by clicking arrow buttons.
+  
+  const [pageNumber, setPageNumber] = useState<number>(0)
+  Button with onClick to set page number to one less
+  Button with onClick to set page number to one more
+  Conditionally render the page you're in
+  {
+    pageNumber === 0 ? <WriteBlogPost />
+    : <BlogPost blogPost={blogPosts[pageNumber - 1]} />
+  }
+  
+   BlogPost {
+    title
+    text
+    selectedTags: string[]
+    isRead
+  }
+
+  (to insert in local storage)
+  data  {
+    pageNumber
+    allTags
+    blogPosts: BlogPost[]
+    
+    (save the inputs in case of reload while writing)
+    title
+    text
+    selectedTags
+  }
+
+https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker                                                      --> DONE
+
+Make twitter
+
+Style twitter
+
+
+Only 1 item in local storage for twitter - 'tweets'
+No uppercase variable. Only uppercase components and types
+Extensions
+  Prettify TypeScript: Better Type Previews
+  Pretty TypeScript Errors
+
+
+Schema
+Server actions to insert, delete, update and select
+Replace localStorage with the server actions created before
+Don't use useState to insert, update or delete - use server actions, then use server action again to select, and setState with the selected data
+
+Twitter schema:
+  id: string
+  author: string
+  text: string
+  parentTweetId: string;
+  isLiked: bool
+
+If parentTweetId -> tweet is a reply
+
+Selecting tweet replies
+db.select().from(tweetsTable).where(eq(parentTweetId), <ID>); -> Gets the replies for the tweet with id = <ID>
+
+-------------------------------------------------------------
+
+REMOVE LOCAL STORAGE                                 ---> DONE
+REPLACE ALL VARIABLE NAMES THAT ARE MISSPELLED       ---> DONE
+ADD CREATEDAT TO ALL TABLES                          ---> DONE
+
+Create Alert component and use it in sign-in and sign-up --> DONE
+
+Create a sign out button that signs out the user when clicked. Make that button inside auth/page.tsx                                                  --> DONE
+
+Create a server action to verify if a user is signed in, and to get the payload inside the jwt. The function returns null if user in not signed in, otherwise returns the payload.                                                  --> DONE
+
+In twitter, create a new column - userId (and delete author)
+
+Reimplement twitter so that the author is automatically created when you tweet something (the author is name of the user in usersTable)
+
+
+
+IMPLEMENTED!!!!!!
+
+i want to know:
+- how to upload files 
+- insert a video 
+- do special effects 
+
+
+Refactor all database queries to database/queries             --> DONE
+Reorganize components - Only reusable components should be inside /components --> DONE
+Replace twMerge() with cn()    --> DONE
+
+Take a look at every shadcn-ui component and replace all code with shadcn-ui components                       --> DONE 
+
+Update todos and blog to store userId in database (do the same as you had to do last week with twitter)                                      --> DONE
+
+Style twitter, todos and blog to make it look beautiful and useful   --> DONE
+
+Create a sidebar that lets you navigate to twitter, todos and blog. It should also have a user button with a dropdown that lets you change between dark and light mode and that allows you to sign out
+Inspiration (https://supabase.com/dashboard/project/ramgqgpverhvfajeaxlu) without the animation:
+- fixed div to the screen
+
+For the user button dropdown: https://ui.shadcn.com/docs/components/dropdown-menu
+
+Follow instructions to enable dark mode: https://ui.shadcn.com/docs/dark-mode/next
+
+Don't use forms from shadcn-ui
+
+
+
+
+Remove "use server" from everything that isn't a server action  --> DONE
+
+Remove unneeded props in twitter                                --> DONE
+Remove unneeded props in todo, and blog
+
+Fetch tweet replies inside each tweet component                 --> DONE
+
+Fix twitter                                                     --> DONE
+
+Delete only the tweets that are written by the user   --> DONE (together)
+
+Fix insert in twitter                                 --> DONE (I don't see any problem)
+
+Only fetch tweets (without replies) in twitter        --> DONE (fetched parent tweets and its replies separately)                    
+
+Apply learnings of fetching data with infinite scrolling in todo    --> DONE
+Apply learnings of fetching data with infinite scrolling in blog    --> DONE: little issue with blogs
+
+Finish everything that was due saturday
+
+Likes table
+  1. Create a new table in the database
+    id
+    userId
+    tweetId
+    createdAt
+  2. Create a server action to handle likes
+    - If the user has already liked the tweet, remove the row from the database
+    - If the user hasn't liked the tweet, add a row to the database
+  3. Select all rows where tweetId is the same as that tweetId and count how many there are (https://orm.drizzle.team/docs/select#aggregations)
+  4. Fetch whether the user has liked the tweet in each Tweet component
+
+
+
+
+Replace all icons to only use className            --> DONE
+
+Use .references() in all tables that have foreign keys  --> DONE
+
+Install REST Client                                 --> DONE
+
+Convert all server actions to api routes
+
+Make a good and usable todo
+
+
+
+
+
+------------------------------ TODO PAGE ------------------------------
+https://calendar.google.com/calendar/u/0/r/tasks
+
+- Toast with undo button https://ui.shadcn.com/docs/components/toast   --> DONE 
+- Menu with delete button                                              --> DONE
+- Accordion with completed tasks (On a later date we will implement pagination) --> DONE
+- Cleaner UI                                                           --> DONE
+- Starred button                                                       --> DONE?
+
+
+
+- Add subtasks                                                         --> DONE
+- Order by my order, date, and Order by starred
+- Edit tasks
+- Drag and drop to reorder
+
+
+
+Observations (is ok?):
+- when i delete a task, i delete subtasks, therefore, when task is completed and i delete it, i also delete completed subtask
+
+
+fix focus:
+- once i send todo needs to turn off 
+- when i click something in the item's div, it does not focus 
+- when i click menu and then out of the div, it focuses 
+
+fix problems:
